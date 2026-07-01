@@ -53,6 +53,65 @@
       </div>
     </section>
 
+<section class="section" style="background:var(--sand)">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Send a message</span>
+          <h2>Write to us</h2>
+          <p>Fill in the form below and we'll get back to you as soon as we can.</p>
+        </div>
+        <form class="reveal" action="https://formsubmit.co/ekwashhiv@gmail.com" method="POST" id="contact-form" style="max-width:680px;margin:48px auto 0;display:flex;flex-direction:column;gap:20px" novalidate>
+          <input type="hidden" name="_subject" value="New message from EEHEO website" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label for="cf-subject" style="font-weight:600;font-size:.92rem">Subject <span style="color:var(--teal-700)">*</span></label>
+            <input id="cf-subject" name="Subject" type="text" required placeholder="e.g. Partnership inquiry" style="padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-700)'" onblur="this.style.borderColor='var(--line)'" />
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="cf-email" style="font-weight:600;font-size:.92rem">Email</label>
+              <input id="cf-email" name="Email" type="email" placeholder="your@email.com" style="padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-700)'" onblur="this.style.borderColor='var(--line)'" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="cf-phone" style="font-weight:600;font-size:.92rem">Phone number</label>
+              <input id="cf-phone" name="Phone" type="tel" placeholder="+256 7XX XXX XXX" style="padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-700)'" onblur="this.style.borderColor='var(--line)'" />
+            </div>
+          </div>
+          <p id="cf-contact-hint" style="font-size:.83rem;color:var(--ink-soft);margin:-8px 0 0">Please provide at least an email or a phone number so we can reply.</p>
+
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label for="cf-message" style="font-weight:600;font-size:.92rem">Message <span style="color:var(--teal-700)">*</span></label>
+            <textarea id="cf-message" name="Message" required rows="6" placeholder="Tell us how we can help…" style="padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;outline:none;resize:vertical;transition:border-color .2s" onfocus="this.style.borderColor='var(--teal-700)'" onblur="this.style.borderColor='var(--line)'"></textarea>
+          </div>
+
+          <div id="cf-error" role="alert" style="display:none;padding:12px 16px;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;color:#b91c1c;font-size:.9rem"></div>
+
+          <button type="submit" class="btn btn-amber" style="align-self:flex-start;padding:14px 32px;font-size:1rem;cursor:pointer">
+            Send message
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </form>
+        <script>
+          document.getElementById('contact-form').addEventListener('submit', function(e) {
+            var email = document.getElementById('cf-email').value.trim();
+            var phone = document.getElementById('cf-phone').value.trim();
+            var err = document.getElementById('cf-error');
+            if (!email && !phone) {
+              e.preventDefault();
+              err.textContent = 'Please enter at least an email address or a phone number.';
+              err.style.display = 'block';
+              document.getElementById('cf-email').focus();
+            } else {
+              err.style.display = 'none';
+            }
+          });
+        </script>
+      </div>
+    </section>
+
     <section class="section">
       <div class="wrap">
         <div class="contact-grid" data-stagger="0.08">
@@ -90,6 +149,8 @@
         </div>
       </div>
     </section>
+
+    
 
     <section class="section" style="padding-top:0">
       <div class="wrap">
