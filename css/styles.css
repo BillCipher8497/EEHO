@@ -69,6 +69,15 @@ button { font-family: inherit; cursor: pointer; }
 .nav-links a:hover { background: var(--sage); }
 .nav-links a.active { color: var(--teal-700); }
 .nav .cta { margin-left: 10px; }
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-item .dropdown-toggle { display: inline-flex; align-items: center; gap: 5px; }
+.nav-item .dropdown-toggle .chev { transition: transform .25s; }
+.nav-item:hover .dropdown-toggle .chev { transform: rotate(180deg); }
+.nav-item .dropdown { position: absolute; top: calc(100% + 8px); left: 0; min-width: 210px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 8px; display: grid; gap: 2px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 60; }
+.nav-item:hover .dropdown, .nav-item:focus-within .dropdown { opacity: 1; visibility: visible; transform: none; }
+.nav-item .dropdown a { display: block; padding: 10px 14px; border-radius: 10px; color: var(--ink); font-weight: 600; font-size: .92rem; }
+.nav-item .dropdown a:hover { background: var(--sage); color: var(--teal-700); }
+.nav.onhero:not(.solid) .nav-item .dropdown a { color: var(--ink); }
 .nav.onhero:not(.solid) .brand, .nav.onhero:not(.solid) .nav-links a { color: #fff; }
 .nav.onhero:not(.solid) .brand small { color: rgba(255,255,255,.7); }
 .nav.onhero:not(.solid) .nav-links a:hover { background: rgba(255,255,255,.12); }
@@ -84,6 +93,10 @@ button { font-family: inherit; cursor: pointer; }
   .mobile-menu a { padding: 14px 12px; border-radius: 12px; font-weight: 600; }
   .mobile-menu a:hover, .mobile-menu a.active { background: var(--sage); color: var(--teal-700); }
   .mobile-menu .btn { justify-content: center; margin-top: 8px; }
+  .mobile-menu a.submenu { padding-left: 30px; font-size: .92rem; color: var(--ink-soft); }
+}
+@media (min-width: 881px) {
+  .nav-item .dropdown-toggle .chev { display: inline-flex; }
 }
 
 /* ---------- HERO ---------- */
@@ -245,6 +258,18 @@ button { font-family: inherit; cursor: pointer; }
 .map-embed { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
 .map-embed iframe { width: 100%; height: 420px; border: 0; display: block; }
 
+/* donations */
+.donate-hero { text-align: center; }
+.donate-panel { max-width: 640px; margin: -60px auto 0; position: relative; z-index: 3; background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow); padding: clamp(28px,5vw,44px); text-align: center; }
+.donate-panel .goal { color: var(--ink-soft); margin: 10px 0 26px; font-size: 1.02rem; }
+.donate-panel .btn-amber { font-size: 1.1rem; padding: 18px 38px; }
+.gfm-embed-wrap { margin-top: 28px; border-radius: var(--radius); overflow: hidden; }
+.donate-why { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.donate-why .why-card { text-align: left; }
+.donate-methods { display: grid; gap: 14px; max-width: 560px; }
+.donate-methods li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-soft); background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.donate-methods li svg { color: var(--teal-500); flex: none; margin-top: 2px; }
+
 /* footer */
 .footer { background: var(--teal-900); color: rgba(255,255,255,.78); padding: 64px 0 32px; position: relative; overflow: hidden; }
 .footer .contours { opacity: .18; }
@@ -262,7 +287,7 @@ button { font-family: inherit; cursor: pointer; }
 .footer-bot .socials a:hover { background: var(--amber); color: #2a1602; }
 
 @media (max-width: 980px) {
-  .focus-grid, .values-grid, .why { grid-template-columns: repeat(2,1fr); }
+  .focus-grid, .values-grid, .why, .donate-why { grid-template-columns: repeat(2,1fr); }
   .stats { grid-template-columns: repeat(2,1fr); }
   .regions { grid-template-columns: repeat(2,1fr); }
   .split { grid-template-columns: 1fr; gap: 36px; }
@@ -271,7 +296,7 @@ button { font-family: inherit; cursor: pointer; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .focus-grid, .values-grid, .why, .stats, .regions { grid-template-columns: 1fr; }
+  .focus-grid, .values-grid, .why, .stats, .regions, .donate-why { grid-template-columns: 1fr; }
   .masonry { columns: 2; }
   .acc-body-inner { padding-left: 26px; }
   .footer-top { grid-template-columns: 1fr; }
